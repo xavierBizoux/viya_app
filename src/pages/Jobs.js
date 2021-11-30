@@ -34,7 +34,7 @@ function Jobs() {
     }, [authInfo, setAuthInfo]);
 
     useEffect(() => {
-        if (authInfo.csrf.job !== "" && selection.table !== null) {
+        if (selection.table !== null) {
             const endpoint = "SASJobExecution/";
             const headers = {
                 'X-CSRF-HEADER': 'X-CSRF-TOKEN',
@@ -45,7 +45,7 @@ function Jobs() {
                 reqType: "getdata",
                 lib: selection.library,
                 ds: selection.table
-            }
+            };
             Instance.get(endpoint, { headers: headers, params: params })
                 .then(response => {
                     const rowsData = response.data.rows.map(row => {
@@ -57,7 +57,6 @@ function Jobs() {
                 });
         }
     }, [selection, authInfo.csrf]);
-
 
     const handleSelection = (event) => {
         event.preventDefault();

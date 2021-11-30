@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { Navbar, Nav, Jumbotron} from 'react-bootstrap';
+import { Navbar, Nav, Jumbotron } from 'react-bootstrap';
 import { NavLink } from 'react-router-dom';
 
 import PAGES from '../data/PAGES';
@@ -12,18 +12,19 @@ function HeaderBar() {
     const navItems = PAGES.map((item, index) =>
         <Nav.Link to={item.href}
             as={NavLink}
-            style={{ color: 'white', textDecoration: 'none' }}
             key={index} >
             {item.label}
         </Nav.Link>
     );
+    const homeButton = <Nav.Link to='/' key='homeButton' as={NavLink}>
+        <FontAwesomeIcon icon="home" color="white" size="lg" />
+    </Nav.Link>;
+    navItems.unshift(homeButton)
     if (authInfo.authenticated) {
         return (
             <Navbar bg="primary">
                 <Navbar.Collapse>
-                    <Nav.Link to='/' as={NavLink}>
-                        <FontAwesomeIcon icon="home" color="white" size="lg" />
-                    </Nav.Link>
+
                     {navItems}
                 </Navbar.Collapse>
                 <span style={{ color: 'darkblue' }}>Welcome {authInfo.user} !</span>

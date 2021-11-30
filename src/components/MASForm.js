@@ -74,7 +74,7 @@ function MASForm(props) {
                                 type="select"
                                 as="select"
                                 onChange={e => handleChange(e, element)}
-                                >
+                            >
                                 {data.options.map((option) => <option key={option} value={option}>{option}</option>)}
                             </Form.Control>
                         </Col>
@@ -82,7 +82,7 @@ function MASForm(props) {
                 );
                 break;
             default:
-                    console.log('unknown form input type');
+                console.log('unknown form input type');
                 break;
         }
     };
@@ -91,7 +91,7 @@ function MASForm(props) {
             <Col md={{ span: 12, offset: 1 }}>
                 <h3>
                     Please set the values for the different risk factors:
-                        </h3>
+                </h3>
                 <Form onSubmit={handleEvaluate} style={{ padding: 10 }} >
                     {elements}
                     <Form.Group as={Row}>

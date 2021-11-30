@@ -31,11 +31,7 @@ function CASSelector(props) {
         setLoading(true);
         if ("cas" in authInfo.session && authInfo.session.cas !== undefined) {
             const endpoint = `/cas-shared-default-http/cas/sessions/${authInfo.session.cas}/actions/table.caslibInfo`;
-            const headers = {
-                "accept": "application/json",
-                "content-type": "application/json"
-            };
-            Instance.post(endpoint, { headers: headers })
+            Instance.post(endpoint)
                 .then(response => {
                     setLibraries(response.data.results.CASLibInfo.rows);
                     setLoading(false);
