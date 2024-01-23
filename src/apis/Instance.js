@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const Instance = axios.create({
-    baseURL: "https://live.lts.gel.race.sas.com",
+    baseURL: "https://server.demo.sas.com",
     headers:{}
 });
 
